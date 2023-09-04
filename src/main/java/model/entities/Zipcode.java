@@ -27,13 +27,19 @@ public class Zipcode
     private Set<Address> addresses = new HashSet<>();
 
     public void addHobbyClub(HobbyClub hobbyClub) {
-        if(hobbyClub != null) {
-            hobbyClub.setHobby(this);
+        clubs.add(hobbyClub);
+
+        if(hobbyClub != null)
+        {
+            hobbyClub.setZipcode(this);
         }
     }
-    public void addAddress(Address address) {
-        if(address != null) {
-            address.setAddress(this);
+    public void addAddress(Address address)
+    {
+        addresses.add(address);
+        if(address != null)
+        {
+            address.setZipcode(this);
         }
     }
 }
