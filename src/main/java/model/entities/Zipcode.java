@@ -25,4 +25,15 @@ public class Zipcode
     private Set<HobbyClub> clubs = new HashSet<>();
     @OneToMany(mappedBy = "zipcode")
     private Set<Address> addresses = new HashSet<>();
+
+    public void addHobbyClub(HobbyClub hobbyClub) {
+        if(hobbyClub != null) {
+            hobbyClub.setHobby(this);
+        }
+    }
+    public void addAddress(Address address) {
+        if(address != null) {
+            address.setAddress(this);
+        }
+    }
 }
