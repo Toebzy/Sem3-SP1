@@ -23,4 +23,22 @@ public class Hobby {
     private Set<HobbyUser> users = new HashSet<>();
     @OneToMany(mappedBy = "hobby")
     private Set<HobbyClub> clubs = new HashSet<>();
+
+
+    public void addHobbyUser(HobbyUser hobbyUser)
+    {
+        users.add(hobbyUser);
+        if(hobbyUser != null)
+        {
+            hobbyUser.setHobby(this);
+        }
+    }
+    public void addHobbyClub(HobbyClub hobbyClub)
+    {
+        clubs.add(hobbyClub);
+        if(hobbyClub != null)
+        {
+            hobbyClub.setHobby(this);
+        }
+    }
 }

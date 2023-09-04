@@ -24,4 +24,13 @@ public class Address
     private Zipcode zipcode;
     @OneToMany(mappedBy = "address")
     private Set<User_simple> userSimples = new HashSet<>();
+
+    public void addUser(User_simple user_simple)
+    {
+        userSimples.add(user_simple);
+        if(user_simple != null)
+        {
+            user_simple.setAddress(this);
+        }
+    }
 }
