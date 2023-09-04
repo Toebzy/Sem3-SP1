@@ -23,4 +23,12 @@ public class HobbyClub
     private Zipcode zipcode;
     @ManyToOne
     private Hobby hobby;
+
+    public HobbyClub(String name, String description, double price, String email)
+    {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.email = email;
+    }
 }

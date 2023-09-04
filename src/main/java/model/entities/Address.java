@@ -25,6 +25,13 @@ public class Address
     @OneToMany(mappedBy = "address")
     private Set<User_simple> userSimples = new HashSet<>();
 
+    public Address(String street, String number, String floor)
+    {
+        this.street = street;
+        this.number = number;
+        this.floor = floor;
+    }
+
     public void addUser(User_simple user_simple)
     {
         userSimples.add(user_simple);

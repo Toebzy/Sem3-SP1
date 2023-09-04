@@ -18,4 +18,6 @@ public class HobbyUser {
     private User_simple userSimple;
     @ManyToOne
     private Hobby hobby;
+
+
 }

@@ -26,6 +26,12 @@ public class Zipcode
     @OneToMany(mappedBy = "zipcode")
     private Set<Address> addresses = new HashSet<>();
 
+    public Zipcode(int zipcode, String cityName)
+    {
+        this.zipcode = zipcode;
+        this.cityName = cityName;
+    }
+
     public void addHobbyClub(HobbyClub hobbyClub) {
         clubs.add(hobbyClub);
 

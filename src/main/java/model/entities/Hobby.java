@@ -24,6 +24,11 @@ public class Hobby {
     @OneToMany(mappedBy = "hobby")
     private Set<HobbyClub> clubs = new HashSet<>();
 
+    public Hobby(String name, String description)
+    {
+        this.name = name;
+        this.description = description;
+    }
 
     public void addHobbyUser(HobbyUser hobbyUser)
     {
