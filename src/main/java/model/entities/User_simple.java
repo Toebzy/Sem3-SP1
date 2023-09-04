@@ -36,4 +36,12 @@ public class User_simple
         this.email = email;
         this.password = password;
     }
+    public void addHobbyUser(HobbyUser hobbyUser)
+    {
+        hobbies.add(hobbyUser);
+        if(hobbyUser != null)
+        {
+            hobbyUser.setUserSimple(this);
+        }
+    }
 }
