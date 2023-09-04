@@ -1,6 +1,5 @@
-package model;
+package model.entities;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -12,16 +11,15 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class HobbyClub
+public class Address
 {
     @Id
     @GeneratedValue
-    @Column(name = "hobby_club_id")
-    private int hobbyClubId;
-    private String name;
-    private String description;
-    private double price;
-    private String email;
+    private int addressId;
+    private String street;
+    private String number;
+    private String floor;
     private int zipcode;
-    private int hobbyId;
+
+
 }
