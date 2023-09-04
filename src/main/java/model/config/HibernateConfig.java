@@ -1,4 +1,4 @@
-package config;
+package model.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
