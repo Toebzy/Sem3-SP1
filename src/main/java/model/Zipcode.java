@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class zipcode
+public class Zipcode
 {
     @Id
     private int zipcode;
