@@ -23,5 +23,5 @@ public class Address
     @ManyToOne
     private Zipcode zipcode;
     @OneToMany(mappedBy = "address")
-    private Set<User> users = new HashSet<>();
+    private Set<User_simple> userSimples = new HashSet<>();
 }

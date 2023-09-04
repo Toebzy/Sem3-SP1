@@ -12,7 +12,7 @@ import java.util.Set;
 @Setter
 @Getter
 @NoArgsConstructor
-public class User
+public class User_simple
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +23,17 @@ public class User
     private String phonenumber;
     private String email;
     private String password;
-    @Column(name = "address_id")
     @ManyToOne
     private Address address;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userSimple")
     private Set<HobbyUser> hobbies = new HashSet<>();
 
+    public User_simple(String name, int age, String phonenumber, String email, String password)
+    {
+        this.name = name;
+        this.age = age;
+        this.phonenumber = phonenumber;
+        this.email = email;
+        this.password = password;
+    }
 }

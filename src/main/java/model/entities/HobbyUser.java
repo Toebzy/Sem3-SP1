@@ -15,7 +15,7 @@ public class HobbyUser {
     @Column(name = "hobby_user_id")
     private int hobbyUserId;
     @ManyToOne
-    private User user;
+    private User_simple userSimple;
     @ManyToOne
     private Hobby hobby;
 }

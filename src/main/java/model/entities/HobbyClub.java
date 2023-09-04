@@ -22,5 +22,5 @@ public class HobbyClub
     @ManyToOne
     private Zipcode zipcode;
     @ManyToOne
-    private Hobby Hobby;
+    private Hobby hobby;
 }

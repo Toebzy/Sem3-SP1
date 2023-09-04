@@ -21,6 +21,6 @@ public class Hobby {
     private String description;
     @OneToMany(mappedBy = "hobby")
     private Set<HobbyUser> users = new HashSet<>();
-    @OneToMany(mappedBy = "club")
+    @OneToMany(mappedBy = "hobby")
     private Set<HobbyClub> clubs = new HashSet<>();
 }

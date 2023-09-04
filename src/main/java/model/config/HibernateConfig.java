@@ -2,7 +2,7 @@ package model.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
-import model.*;
+import model.entities.User_simple;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -58,12 +58,12 @@ public class HibernateConfig {
 
     private static void getAnnotationConfiguration(Configuration configuration) {
         // add annotated classes
-        configuration.addAnnotatedClass(Address.class);
-        configuration.addAnnotatedClass(Hobby.class);
-        configuration.addAnnotatedClass(HobbyClub.class);
-        configuration.addAnnotatedClass(HobbyUser.class);
-        configuration.addAnnotatedClass(User.class);
-        configuration.addAnnotatedClass(Zipcode.class);
+        configuration.addAnnotatedClass(model.entities.Address.class);
+        configuration.addAnnotatedClass(model.entities.Hobby.class);
+        configuration.addAnnotatedClass(model.entities.HobbyClub.class);
+        configuration.addAnnotatedClass(model.entities.HobbyUser.class);
+        configuration.addAnnotatedClass(User_simple.class);
+        configuration.addAnnotatedClass(model.entities.Zipcode.class);
 
     }
 
