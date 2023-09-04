@@ -1,11 +1,12 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -19,7 +20,8 @@ public class Address
     private String street;
     private String number;
     private String floor;
-    private int zipcode;
-
-
+    @ManyToOne
+    private Zipcode zipcode;
+    @OneToMany(mappedBy = "address")
+    private Set<User> users = new HashSet<>();
 }

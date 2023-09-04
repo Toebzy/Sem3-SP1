@@ -1,12 +1,12 @@
 package model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -19,4 +19,8 @@ public class Hobby {
     private int hobbyId;
     private String name;
     private String description;
+    @OneToMany(mappedBy = "hobby")
+    private Set<HobbyUser> users = new HashSet<>();
+    @OneToMany(mappedBy = "club")
+    private Set<HobbyClub> clubs = new HashSet<>();
 }

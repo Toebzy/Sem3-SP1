@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Setter
 @Getter
@@ -20,7 +23,10 @@ public class User
     private String phonenumber;
     private String email;
     private String password;
-    @Column(name = "adress_id")
-    private int adressId;
+    @Column(name = "address_id")
+    @ManyToOne
+    private Address address;
+    @OneToMany(mappedBy = "user")
+    private Set<HobbyUser> hobbies = new HashSet<>();
 
 }

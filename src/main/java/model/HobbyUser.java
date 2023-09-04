@@ -14,6 +14,8 @@ public class HobbyUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "hobby_user_id")
     private int hobbyUserId;
-    private int userId;
-    private int hobbyId;
+    @ManyToOne
+    private User user;
+    @ManyToOne
+    private Hobby hobby;
 }
