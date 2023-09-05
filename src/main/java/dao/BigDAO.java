@@ -43,6 +43,24 @@ public class BigDAO
             return userDTO;
         }
     }
+
+
+    public AllInformationUserDTO getUserInfoFromPhonenumber(String phonenumber){
+
+        try(EntityManager em = emf.createEntityManager())
+        {
+            TypedQuery<AllInformationUserDTO> q1 = em.createQuery("SELECT NEW dto.AllInformationUserDTO(us.name, us.age, us.phonenumber, us.email, a.street, a.number, a.floor, z.zipcode, z.cityName) FROM User_simple us JOIN us.address a JOIN a.zipcode z JOIN us.hobbies h WHERE us.phonenumber = :id", AllInformationUserDTO.class);
+            q1.setParameter("id", phonenumber);
+            AllInformationUserDTO userDTO  = q1.getSingleResult();
+            TypedQuery<Hobby> q2 = em.createQuery("SELECT h FROM HobbyUser hu JOIN hu.hobby h WHERE hu.userSimple.phonenumber = :phonenumber", Hobby.class);
+            q2.setParameter("phonenumber", phonenumber);
+            Set<Hobby> hobbies = new HashSet<>(q2.getResultList());
+
+            userDTO.setHobbies(hobbies);
+            return userDTO;
+        }
+    }
+
     public String getAllPhonenumbersFromUser(User_simple user_simple)
     {
         try(EntityManager em = emf.createEntityManager())

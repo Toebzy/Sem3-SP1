@@ -41,6 +41,7 @@ public class Main {
         System.out.println(bigDAO.getNumberOfPeopleWithGivenHobby(hobby1));
         System.out.println(bigDAO.getHobbiesInterestedCount());
         System.out.println(bigDAO.getAllPersonsFromCity(z1));
+        System.out.println(bigDAO.getUserInfoFromPhonenumber("+4512345678"));
         List<Zipcode> zipcodeList = bigDAO.getAllZipcodes();
         for (Zipcode zipcode : zipcodeList)
         {
