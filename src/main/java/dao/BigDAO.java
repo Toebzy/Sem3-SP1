@@ -6,9 +6,11 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;
 import model.config.HibernateConfig;
 import model.entities.Hobby;
+import model.entities.HobbyUser;
 import model.entities.User_simple;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class BigDAO
@@ -39,6 +41,13 @@ public class BigDAO
             TypedQuery<String> q1 = em.createQuery("SELECT us.phonenumber FROM User_simple us WHERE us.id = :id", String.class);
             q1.setParameter("id", user_simple.getUserId());
             return q1.getSingleResult();
+        }
+    }
+    public List getAllPersonsFromHobby(Hobby hobby) {
+        try(EntityManager em = emf.createEntityManager()) {
+            TypedQuery<List> q1 = em.createQuery("SELECT us FROM HobbyUser hu JOIN hu.hobby h JOIN hu.userSimple us WHERE h.id = :id", List.class);
+            q1.setParameter("id", hobby.getHobbyId());
+            return q1.getResultList();
         }
     }
 }
