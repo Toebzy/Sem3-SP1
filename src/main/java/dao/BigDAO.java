@@ -15,6 +15,15 @@ import java.util.*;
 public class BigDAO
 {
     EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig("hobby");
+    private static BigDAO bigDAO;
+    public static BigDAO getInstance()
+    {
+        if(bigDAO == null)
+        {
+            bigDAO = new BigDAO();
+        }
+        return bigDAO;
+    }
 
     public AllInformationUserDTO getAllInfoUser(User_simple user_simple)
     {
