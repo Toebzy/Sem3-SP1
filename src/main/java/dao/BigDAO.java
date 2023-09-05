@@ -9,6 +9,7 @@ import model.config.HibernateConfig;
 import model.entities.Hobby;
 import model.entities.HobbyUser;
 import model.entities.User_simple;
+import model.entities.Zipcode;
 
 import java.util.*;
 
@@ -86,9 +87,15 @@ public class BigDAO
                 Long count = (Long) result[1];
                 hobbyAssignmentCounts.put(hobby, count.intValue());
             }
-
-            // Create and return the HobbiesInterestedDTO object
             return new HobbiesInterestedDTO(hobbyAssignmentCounts);
+        }
+    }
+            // Create and return the HobbiesInterestedDTO object
+    public List getAllPersonsFromCity(Zipcode zipcode) {
+        try(EntityManager em = emf.createEntityManager()) {
+            TypedQuery<List> q1 = em.createQuery("SELECT us FROM Zipcode zc JOIN zc.addresses a JOIN a.userSimples us WHERE zc.zipcode = :zipcode", List.class);
+            q1.setParameter("zipcode", zipcode.getZipcode());
+            return q1.getResultList();
         }
     }
 }

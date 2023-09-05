@@ -38,5 +38,7 @@ public class Main {
         System.out.println(bigDAO.getAllPersonsFromHobby(hobby1));
         System.out.println(bigDAO.getNumberOfPeopleWithGivenHobby(hobby1));
         System.out.println(bigDAO.getHobbiesInterestedCount());
+        System.out.println(bigDAO.getAllPersonsFromCity(z1));
+
     }
 }
