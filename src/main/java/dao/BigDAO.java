@@ -32,4 +32,13 @@ public class BigDAO
             return userDTO;
         }
     }
+    public String getAllPhonenumbersFromUser(User_simple user_simple)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            TypedQuery<String> q1 = em.createQuery("SELECT us.phonenumber FROM User_simple us WHERE us.id = :id", String.class);
+            q1.setParameter("id", user_simple.getUserId());
+            return q1.getSingleResult();
+        }
+    }
 }
