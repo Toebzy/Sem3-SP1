@@ -90,11 +90,18 @@ public class BigDAO
             return new HobbiesInterestedDTO(hobbyAssignmentCounts);
         }
     }
-            // Create and return the HobbiesInterestedDTO object
     public List getAllPersonsFromCity(Zipcode zipcode) {
         try(EntityManager em = emf.createEntityManager()) {
             TypedQuery<List> q1 = em.createQuery("SELECT us FROM Zipcode zc JOIN zc.addresses a JOIN a.userSimples us WHERE zc.zipcode = :zipcode", List.class);
             q1.setParameter("zipcode", zipcode.getZipcode());
+            return q1.getResultList();
+        }
+    }
+    public List<Zipcode> getAllZipcodes()
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            TypedQuery<Zipcode> q1 = em.createQuery("SELECT zc FROM Zipcode zc", Zipcode.class);
             return q1.getResultList();
         }
     }

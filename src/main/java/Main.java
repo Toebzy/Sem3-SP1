@@ -4,6 +4,8 @@ import jakarta.persistence.EntityManagerFactory;
 import model.config.HibernateConfig;
 import model.entities.*;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args)
     {
@@ -39,6 +41,10 @@ public class Main {
         System.out.println(bigDAO.getNumberOfPeopleWithGivenHobby(hobby1));
         System.out.println(bigDAO.getHobbiesInterestedCount());
         System.out.println(bigDAO.getAllPersonsFromCity(z1));
-
+        List<Zipcode> zipcodeList = bigDAO.getAllZipcodes();
+        for (Zipcode zipcode : zipcodeList)
+        {
+            System.out.println(zipcode);
+        }
     }
 }
