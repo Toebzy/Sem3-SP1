@@ -52,7 +52,6 @@ public class BigDAO
             return q1.getSingleResult();
         }
     }
-
     public List getAllPersonsFromHobby(Hobby hobby)
     {
         try (EntityManager em = emf.createEntityManager())

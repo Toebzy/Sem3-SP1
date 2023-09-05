@@ -31,7 +31,6 @@ public class Main {
             a1.addUser(u1);
             z1.addHobbyClub(hc1);
             em.getTransaction().commit();
-
         }
         System.out.println(bigDAO.getAllInfoUser(u1));
         System.out.println(bigDAO.getAllPhonenumbersFromUser(u1));
@@ -39,6 +38,5 @@ public class Main {
         System.out.println(bigDAO.getNumberOfPeopleWithGivenHobby(hobby1));
         System.out.println(bigDAO.getHobbiesInterestedCount());
         System.out.println(bigDAO.getAllPersonsFromCity(z1));
-
     }
 }
