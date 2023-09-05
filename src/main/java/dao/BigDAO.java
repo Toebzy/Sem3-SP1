@@ -1,6 +1,7 @@
 package dao;
 
 import dto.AllInformationUserDTO;
+import dto.HobbiesInterestedDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;
@@ -9,9 +10,7 @@ import model.entities.Hobby;
 import model.entities.HobbyUser;
 import model.entities.User_simple;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class BigDAO
 {
@@ -60,6 +59,27 @@ public class BigDAO
             TypedQuery<Integer> q1 = em.createQuery("SELECT SIZE(h.users) FROM Hobby h WHERE h.id = :id", Integer.class);
             q1.setParameter("id", hobby.getHobbyId());
             return q1.getSingleResult();
+        }
+    }
+    public HobbiesInterestedDTO getHobbiesInterestedCount() {
+        try (EntityManager em = emf.createEntityManager()) {
+            TypedQuery<Object[]> query = em.createQuery("SELECT h, COUNT(hu) FROM Hobby h LEFT JOIN h.users hu GROUP BY h", Object[].class);
+
+            // Execute the query and get the results as a list of arrays
+            List<Object[]> resultList = query.getResultList();
+
+            // Create a map to store the results
+            Map<Hobby, Integer> hobbyAssignmentCounts = new HashMap<>();
+
+            // Iterate through the results and populate the map
+            for (Object[] result : resultList) {
+                Hobby hobby = (Hobby) result[0];
+                Long count = (Long) result[1];
+                hobbyAssignmentCounts.put(hobby, count.intValue());
+            }
+
+            // Create and return the HobbiesInterestedDTO object
+            return new HobbiesInterestedDTO(hobbyAssignmentCounts);
         }
     }
 }
