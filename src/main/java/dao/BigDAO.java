@@ -44,12 +44,15 @@ public class BigDAO
         }
     }
 
-    public List getAllPersonsFromHobby(Hobby hobby) {
-        try(EntityManager em = emf.createEntityManager()) {
+    public List getAllPersonsFromHobby(Hobby hobby)
+    {
+        try (EntityManager em = emf.createEntityManager())
+        {
             TypedQuery<List> q1 = em.createQuery("SELECT us FROM HobbyUser hu JOIN hu.hobby h JOIN hu.userSimple us WHERE h.id = :id", List.class);
             q1.setParameter("id", hobby.getHobbyId());
             return q1.getResultList();
-
+        }
+    }
     public int getNumberOfPeopleWithGivenHobby(Hobby hobby)
     {
         try(EntityManager em = emf.createEntityManager())

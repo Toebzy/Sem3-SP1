@@ -36,7 +36,6 @@ public class Main {
         System.out.println(bigDAO.getAllInfoUser(u1));
         System.out.println(bigDAO.getAllPhonenumbersFromUser(u1));
         System.out.println(bigDAO.getAllPersonsFromHobby(hobby1));
-        System.out.println("Hello world!");
         System.out.println(bigDAO.getNumberOfPeopleWithGivenHobby(hobby1));
     }
 }
