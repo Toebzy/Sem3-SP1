@@ -41,4 +41,13 @@ public class BigDAO
             return q1.getSingleResult();
         }
     }
+    public int getNumberOfPeopleWithGivenHobby(Hobby hobby)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            TypedQuery<Integer> q1 = em.createQuery("SELECT SIZE(h.users) FROM Hobby h WHERE h.id = :id", Integer.class);
+            q1.setParameter("id", hobby.getHobbyId());
+            return q1.getSingleResult();
+        }
+    }
 }
