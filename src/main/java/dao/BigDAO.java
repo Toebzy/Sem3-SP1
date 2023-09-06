@@ -4,6 +4,7 @@ import dto.AllInformationUserDTO;
 import dto.HobbiesInterestedDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import model.config.HibernateConfig;
 import model.entities.*;
@@ -93,7 +94,7 @@ public class BigDAO
             List<Object[]> resultList = query.getResultList();
 
             // Create a map to store the results
-            Map<Hobby, Integer> hobbyAssignmentCounts = new HashMap<>();
+            LinkedHashMap<Hobby, Integer> hobbyAssignmentCounts = new LinkedHashMap<>();
 
             // Iterate through the results and populate the map
             for (Object[] result : resultList) {
@@ -228,6 +229,9 @@ public class BigDAO
         try(EntityManager em = emf.createEntityManager())
         {
             em.getTransaction().begin();
+            em.createQuery("DELETE FROM HobbyUser hu WHERE hu.hobby = :hobby")
+                    .setParameter("hobby", hobby)
+                    .executeUpdate();
             em.remove(hobby);
             em.getTransaction().commit();
         }
@@ -262,12 +266,12 @@ public class BigDAO
             return hobbyClub;
         }
     }
-    public HobbyClub findHobyClubById(int id)
+    public HobbyClub findHobbyClubById(int id)
     {
         try(EntityManager em = emf.createEntityManager())
         {
-            HobbyClub foundHobyClubUser = em.find(HobbyClub.class, id);
-            return foundHobyClubUser;
+            HobbyClub foundHobbyClubUser = em.find(HobbyClub.class, id);
+            return foundHobbyClubUser;
         }
     }
 }

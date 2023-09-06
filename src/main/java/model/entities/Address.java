@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -39,5 +40,10 @@ public class Address
         {
             user_simple.setAddress(this);
         }
+    }
+    @Override
+    public String toString()
+    {
+        return "Street: " + street + " Number: " + number + " Floor: " + floor;
     }
 }

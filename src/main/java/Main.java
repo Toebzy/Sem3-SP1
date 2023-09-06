@@ -13,7 +13,7 @@ public class Main {
         User_simple u1 = new User_simple("Kaj", 20, "+4512345678", "1@1.dk", "1234");
         Address a1 = new Address("hejvej", "4554b", "300");
         Hobby hobby1 = new Hobby("fodbold", "man sparker til en bold");
-        HobbyClub hc1 = new HobbyClub("Brøndbys unge", "Børn sparker til en bold", 32000, "TobiasErPedofil@cph.dk");
+        HobbyClub hc1 = new HobbyClub("Brøndbys unge", "Børn sparker til en bold", 32000, "cph@cph.dk");
         Zipcode z1 = new Zipcode(4200, "Slagelse");
         HobbyUser hu1 = new HobbyUser();
         bigDAO.saveUser(u1);

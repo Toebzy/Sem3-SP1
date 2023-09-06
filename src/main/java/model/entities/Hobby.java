@@ -47,4 +47,9 @@ public class Hobby {
             hobbyClub.setHobby(this);
         }
     }
+    @Override
+    public String toString()
+    {
+        return "Hobby navn: " + name + " Hobby beksrivelse: " + description;
+    }
 }

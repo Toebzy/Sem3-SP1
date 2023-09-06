@@ -3,14 +3,17 @@ package dto;
 import lombok.ToString;
 import model.entities.Hobby;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+
 @ToString
 public class HobbiesInterestedDTO
 {
-    private Map<Hobby, Integer> interested;
+    private LinkedHashMap<Hobby, Integer> interested;
 
-    public HobbiesInterestedDTO(Map<Hobby, Integer> interested)
+    public HobbiesInterestedDTO(LinkedHashMap<Hobby, Integer> interested)
     {
         this.interested = interested;
     }
