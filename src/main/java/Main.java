@@ -20,18 +20,12 @@ public class Main {
         bigDAO.saveHobby(hobby1);
         bigDAO.saveAddress(a1);
         bigDAO.saveHobbyClub(hc1);
-
         try(EntityManager em = emf.createEntityManager())
         {
             em.getTransaction().begin();
-            //em.persist(u1);
             User_simple userfound = em.find(User_simple.class, u1.getUserId());
             Address addressfound = em.find(Address.class, a1.getAddressId());
             em.persist(hu1);
-
-           // em.persist(a1);
-           // em.persist(hobby1);
-            //em.persist(hc1);
             em.persist(z1);
             z1.addAddress(addressfound);
             hobby1.addHobbyClub(hc1);
