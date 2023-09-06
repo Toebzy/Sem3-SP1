@@ -6,10 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;
 import model.config.HibernateConfig;
-import model.entities.Hobby;
-import model.entities.HobbyUser;
-import model.entities.User_simple;
-import model.entities.Zipcode;
+import model.entities.*;
 
 import java.util.*;
 

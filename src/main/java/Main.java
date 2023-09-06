@@ -17,13 +17,15 @@ public class Main {
         HobbyClub hc1 = new HobbyClub("Brøndbys unge", "Børn sparker til en bold", 32000, "TobiasErPedofil@cph.dk");
         Zipcode z1 = new Zipcode(4200, "Slagelse");
         HobbyUser hu1 = new HobbyUser();
+        bigDAO.saveUser(u1);
+
 
         try(EntityManager em = emf.createEntityManager())
         {
-            bigDAO.saveUser(u1);
-            em.getTransaction().begin();
 
+            em.getTransaction().begin();
             //em.persist(u1);
+            User_simple userfound = em.find(User_simple.class, u1.getUserId());
             em.persist(hu1);
             em.persist(a1);
             em.persist(hobby1);
@@ -31,12 +33,14 @@ public class Main {
             em.persist(z1);
             z1.addAddress(a1);
             hobby1.addHobbyClub(hc1);
-            u1.addHobbyUser(hu1);
+            userfound.addHobbyUser(hu1);
             hobby1.addHobbyUser(hu1);
-            a1.addUser(u1);
+            a1.addUser(userfound);
             z1.addHobbyClub(hc1);
             em.getTransaction().commit();
+
         }
+
 
 
         System.out.println(bigDAO.getAllInfoUser(u1));
