@@ -1,8 +1,8 @@
 # The Hobby App
 Our business idea, is to create a SoMe-type app. The app will be able to to match you with people of the same hobbies, within your area. 
-You can search up hobbies, clubs or people. The vision is to create an easy-to-use app, that can bring people of the same interests together. 
+You can search up hobbies, clubs or people. The vision is to create an easy-to-use app, that can bring people of the same interests together
 
-# EE-Diagram
+# EER-Diagram
 
 ![EE-Diagram](https://github.com/Toebzy/Sem3-SP1/assets/113095884/f8e4fdc0-604a-4d86-b932-b6a5c252003a)
 
