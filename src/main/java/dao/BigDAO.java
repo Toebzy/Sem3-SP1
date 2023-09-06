@@ -193,7 +193,44 @@ public class BigDAO
             return foundAddress;
         }
     }
+    public Hobby saveHobby(Hobby hobby)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            em.persist(hobby);
+            em.getTransaction().commit();
+            return hobby;
+        }
+    }
+    public Hobby findHobbyById(int id)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            Hobby foundHobby = em.find(Hobby.class, id);
+            return foundHobby;
+        }
+    }
+    public Hobby updateHobby(Hobby hobby)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            Hobby updatedHobby = em.merge(hobby);
+            em.getTransaction().commit();
+            return updatedHobby;
+        }
+    }
+    public void deleteHobby(Hobby hobby)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            em.remove(hobby);
+            em.getTransaction().commit();
+        }
+    }
 
-//AWDØÆ:AWDØÆA:WDA
+
     
 }

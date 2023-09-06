@@ -17,21 +17,24 @@ public class Main {
         Zipcode z1 = new Zipcode(4200, "Slagelse");
         HobbyUser hu1 = new HobbyUser();
         bigDAO.saveUser(u1);
+        bigDAO.saveHobby(hobby1);
+        bigDAO.saveAddress(a1);
         try(EntityManager em = emf.createEntityManager())
         {
             em.getTransaction().begin();
             //em.persist(u1);
             User_simple userfound = em.find(User_simple.class, u1.getUserId());
+            Address addressfound = em.find(Address.class, a1.getAddressId());
             em.persist(hu1);
-            em.persist(a1);
-            em.persist(hobby1);
+           // em.persist(a1);
+           // em.persist(hobby1);
             em.persist(hc1);
             em.persist(z1);
-            z1.addAddress(a1);
+            z1.addAddress(addressfound);
             hobby1.addHobbyClub(hc1);
             userfound.addHobbyUser(hu1);
             hobby1.addHobbyUser(hu1);
-            a1.addUser(userfound);
+            addressfound.addUser(userfound);
             z1.addHobbyClub(hc1);
             em.getTransaction().commit();
         }
