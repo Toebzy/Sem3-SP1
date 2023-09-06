@@ -7,6 +7,7 @@ import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -47,5 +48,11 @@ public class Zipcode
         {
             address.setZipcode(this);
         }
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Zipcode: " + zipcode + " City name:" +cityName;
     }
 }
