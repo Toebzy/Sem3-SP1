@@ -122,4 +122,14 @@ public class BigDAO
             return q1.getResultList();
         }
     }
+    public User_simple saveUser(User_simple user_simple)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+          em.getTransaction().begin();
+          em.persist(user_simple);
+          em.getTransaction().commit();
+          return user_simple;
+        }
+    }
 }
