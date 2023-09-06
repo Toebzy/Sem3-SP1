@@ -156,4 +156,41 @@ public class BigDAO
             em.getTransaction().commit();
         }
     }
+    public Address saveAddress(Address address)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            em.persist(address);
+            em.getTransaction().commit();
+            return address;
+        }
+    }
+    public Address updateAddress(Address address)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            Address updatedAddress = em.merge(address);
+            em.getTransaction().commit();
+            return updatedAddress;
+        }
+    }
+    public void deleteAddress(Address address)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            em.remove(address);
+            em.getTransaction().commit();
+        }
+    }
+    public Address findAddressById(int id)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            Address foundAddress = em.find(Address.class, id);
+            return foundAddress;
+        }
+    }
 }

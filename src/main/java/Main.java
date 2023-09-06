@@ -3,7 +3,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import model.config.HibernateConfig;
 import model.entities.*;
-
 import java.util.List;
 
 public class Main {
@@ -18,11 +17,8 @@ public class Main {
         Zipcode z1 = new Zipcode(4200, "Slagelse");
         HobbyUser hu1 = new HobbyUser();
         bigDAO.saveUser(u1);
-
-
         try(EntityManager em = emf.createEntityManager())
         {
-
             em.getTransaction().begin();
             //em.persist(u1);
             User_simple userfound = em.find(User_simple.class, u1.getUserId());
@@ -38,10 +34,7 @@ public class Main {
             a1.addUser(userfound);
             z1.addHobbyClub(hc1);
             em.getTransaction().commit();
-
         }
-
-
         System.out.println(bigDAO.findById(u1.getUserId()));
         System.out.println(bigDAO.getAllInfoUser(u1));
         System.out.println(bigDAO.getAllPhonenumbersFromUser(u1));
@@ -55,8 +48,5 @@ public class Main {
         {
             System.out.println(zipcode);
         }
-
-
     }
-
 }
