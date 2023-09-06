@@ -129,4 +129,31 @@ public class BigDAO
           return user_simple;
         }
     }
+    public User_simple findById(int id)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            User_simple foundUser = em.find(User_simple.class, id);
+            return foundUser;
+        }
+    }
+    public User_simple updateUser(User_simple user_simple)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            User_simple updatedUser = em.merge(user_simple);
+            em.getTransaction().commit();
+            return updatedUser;
+        }
+    }
+    public void deleteUser(User_simple user_simple)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            em.remove(user_simple);
+            em.getTransaction().commit();
+        }
+    }
 }

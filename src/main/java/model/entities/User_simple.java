@@ -26,7 +26,7 @@ public class User_simple
     private String password;
     @ManyToOne
     private Address address;
-    @OneToMany(mappedBy = "userSimple")
+    @OneToMany(mappedBy = "userSimple", fetch = FetchType.EAGER)
     private Set<HobbyUser> hobbies = new HashSet<>();
 
     public User_simple(String name, int age, String phonenumber, String email, String password)

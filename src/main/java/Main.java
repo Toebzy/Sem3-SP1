@@ -42,7 +42,7 @@ public class Main {
         }
 
 
-
+        System.out.println(bigDAO.findById(u1.getUserId()));
         System.out.println(bigDAO.getAllInfoUser(u1));
         System.out.println(bigDAO.getAllPhonenumbersFromUser(u1));
         System.out.println(bigDAO.getAllPersonsFromHobby(hobby1));
