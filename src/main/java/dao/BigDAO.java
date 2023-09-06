@@ -119,14 +119,15 @@ public class BigDAO
             return q1.getResultList();
         }
     }
+
     public User_simple saveUser(User_simple user_simple)
     {
         try(EntityManager em = emf.createEntityManager())
         {
-          em.getTransaction().begin();
-          em.persist(user_simple);
-          em.getTransaction().commit();
-          return user_simple;
+            em.getTransaction().begin();
+            em.persist(user_simple);
+            em.getTransaction().commit();
+            return user_simple;
         }
     }
     public User_simple findById(int id)
@@ -156,6 +157,7 @@ public class BigDAO
             em.getTransaction().commit();
         }
     }
+
     public Address saveAddress(Address address)
     {
         try(EntityManager em = emf.createEntityManager())
@@ -231,6 +233,41 @@ public class BigDAO
         }
     }
 
-
-    
+    public void deleteHobbyClub(HobbyClub hobbyClub)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            em.remove(hobbyClub);
+            em.getTransaction().commit();
+        }
+    }
+    public HobbyClub updateHobbyClub(HobbyClub hobbyClub)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            HobbyClub updatedHobbyClub = em.merge(hobbyClub);
+            em.getTransaction().commit();
+            return updatedHobbyClub;
+        }
+    }
+    public HobbyClub saveHobbyClub(HobbyClub hobbyClub)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            em.persist(hobbyClub);
+            em.getTransaction().commit();
+            return hobbyClub;
+        }
+    }
+    public HobbyClub findHobyClubById(int id)
+    {
+        try(EntityManager em = emf.createEntityManager())
+        {
+            HobbyClub foundHobyClubUser = em.find(HobbyClub.class, id);
+            return foundHobyClubUser;
+        }
+    }
 }
